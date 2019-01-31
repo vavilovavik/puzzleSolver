@@ -12,6 +12,10 @@ public class SolutionAlgorithm implements PuzzleSolver {
     }
 
     public int[] resolve(int[] start) {
+        if (!isValidState(start)) {
+            throw new IllegalArgumentException("Invalid state: " + Arrays.toString(start));
+        }
+
         ArrayList<State> open = new ArrayList<>();
         ArrayList<Integer> close = new ArrayList<>();
 
@@ -83,5 +87,16 @@ public class SolutionAlgorithm implements PuzzleSolver {
             res[i++] = s;
         }
         return res;
+    }
+
+    private boolean isValidState(int[] state) {
+        int[] sortedTerminate = Arrays.copyOf(terminate, terminate.length);
+        Arrays.sort(sortedTerminate);
+        int terminateHash = Arrays.hashCode(sortedTerminate);
+
+        int[] checkState = Arrays.copyOf(state, state.length);
+        Arrays.sort(checkState);
+
+        return terminateHash == Arrays.hashCode(checkState);
     }
 }

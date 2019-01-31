@@ -32,19 +32,19 @@ public class Puzzle {
     }
 
     public static int[] generateInitialState() {
-        return new int[] {0, 1, 2, 3, 4, 5, 6, 7};
-//        int size = terminate.length;
-//        ArrayList<Integer> list = new ArrayList<>(size);
-//        for (int i = 0; i < size; i++) {
-//            list.add(i);
-//        }
-//
-//        int[] state = new int[size];
-//        Random r = new Random();
-//
-//        for (int i = 0; i < size; i++) {
-//            state[i] = list.remove(r.nextInt(list.size()));
-//        }
-//        return state;
+//        return new int[] {0, 1, 2, 3, 4, 5, 6, 7};
+        int size = terminate.length;
+        ArrayList<Integer> list = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            list.add(i);
+        }
+
+        int[] state = new int[size];
+        Random r = new Random();
+
+        for (int i = 0; i < size; i++) {
+            state[i] = list.remove(r.nextInt(list.size()));
+        }
+        return state;
     }
 }
