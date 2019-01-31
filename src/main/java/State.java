@@ -11,10 +11,9 @@ public class State {
     private int[] state;
     private int hash;
 
-
     public State(int[] state) {
         this.state = state;
-        hash = Arrays.hashCode(state);
+        this.hash = Arrays.hashCode(state);
     }
 
     public int getG() {
@@ -53,21 +52,20 @@ public class State {
         return state;
     }
 
-    public List<State> getChildren(int[][] sublings) {
-        int[] state = getState();
+    public List<State> getChildren(int[][] siblings) {
         int zeroIndex = IntStream.range(0, state.length)
                 .filter(i -> 0 == state[i])
                 .findFirst()
                 .orElse(-1);
 
         List<State> children = new ArrayList<>();
-        for (int sublingIndex : sublings[zeroIndex]) {
+        for (int siblingsIndex : siblings[zeroIndex]) {
             int[] childState = Arrays.copyOf(state, state.length);
-            childState[zeroIndex] = state[sublingIndex];
-            childState[sublingIndex] = 0;
+            childState[zeroIndex] = state[siblingsIndex];
+            childState[siblingsIndex] = 0;
 
             State child = new State(childState);
-            child.setMovedValue(state[sublingIndex]);
+            child.setMovedValue(state[siblingsIndex]);
             child.setG(this.g + 1);
 
             children.add(child);
@@ -80,7 +78,6 @@ public class State {
     }
 
     public boolean isTerminate(int[] terminate) {
-        int[] state = getState();
         return Arrays.equals(state, terminate);
     }
 

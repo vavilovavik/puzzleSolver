@@ -4,11 +4,11 @@ import java.util.LinkedList;
 
 public class SolutionAlgorithm implements PuzzleSolver {
     private int[] terminate;
-    private int[][] sublings;
+    private int[][] siblings;
 
-    public SolutionAlgorithm(int[] terminate, int[][] sublings) {
+    public SolutionAlgorithm(int[] terminate, int[][] siblings) {
         this.terminate = terminate;
-        this.sublings = sublings;
+        this.siblings = siblings;
     }
 
     public int[] resolve(int[] start) {
@@ -29,7 +29,7 @@ public class SolutionAlgorithm implements PuzzleSolver {
             open.remove(currentState);
             close.add(currentState.hashCode());
 
-            for (State child : currentState.getChildren(sublings)) {
+            for (State child : currentState.getChildren(siblings)) {
                 if (close.contains(child.hashCode())) {
                     continue;
                 }
@@ -80,10 +80,8 @@ public class SolutionAlgorithm implements PuzzleSolver {
 
         int i = 0;
         for (int s : sequence) {
-            res[i] = s;
-            i++;
+            res[i++] = s;
         }
         return res;
     }
-
 }

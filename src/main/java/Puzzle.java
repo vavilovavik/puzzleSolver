@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Puzzle {
     private static int[] terminate = new int[] {1, 2, 3, 4, 0, 5, 6, 7};
-    private static int[][] sublings = new int[][] {
+    private static int[][] siblings = new int[][] {
             {1, 2},
             {0, 2, 3},
             {0, 1, 5},
@@ -20,7 +20,7 @@ public class Puzzle {
         int[] initialState = generateInitialState();
         System.out.println("Initial state: " + Arrays.toString(initialState));
 
-        SolutionAlgorithm solution = new SolutionAlgorithm(terminate, sublings);
+        SolutionAlgorithm solution = new SolutionAlgorithm(terminate, siblings);
 
         int[] sequence = solution.resolve(initialState);
 
@@ -32,19 +32,19 @@ public class Puzzle {
     }
 
     public static int[] generateInitialState() {
-//        return new int[] {0, 1, 2, 3, 4, 5, 6, 7};
-        int size = terminate.length;
-        ArrayList<Integer> list = new ArrayList<>(size);
-        for (int i = 0; i < size; i++) {
-            list.add(i);
-        }
-
-        int[] state = new int[size];
-        Random r = new Random();
-
-        for (int i = 0; i < size; i++) {
-            state[i] = list.remove(r.nextInt(list.size()));
-        }
-        return state;
+        return new int[] {0, 1, 2, 3, 4, 5, 6, 7};
+//        int size = terminate.length;
+//        ArrayList<Integer> list = new ArrayList<>(size);
+//        for (int i = 0; i < size; i++) {
+//            list.add(i);
+//        }
+//
+//        int[] state = new int[size];
+//        Random r = new Random();
+//
+//        for (int i = 0; i < size; i++) {
+//            state[i] = list.remove(r.nextInt(list.size()));
+//        }
+//        return state;
     }
 }
