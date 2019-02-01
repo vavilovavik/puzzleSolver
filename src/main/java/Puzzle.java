@@ -21,7 +21,6 @@ public class Puzzle {
         System.out.println("Initial state: " + Arrays.toString(initialState));
 
         SolutionAlgorithm solution = new SolutionAlgorithm(terminate, siblings);
-
         int[] sequence = solution.resolve(initialState);
 
         String res = Arrays.stream(sequence)
@@ -32,7 +31,7 @@ public class Puzzle {
     }
 
     public static int[] generateInitialState() {
-//        return new int[] {0, 1, 2, 3, 4, 5, 6, 7};
+//        return new int[] {1, 6, 3, 4, 0, 7, 2, 5};
         int size = terminate.length;
         ArrayList<Integer> list = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
