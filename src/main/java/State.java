@@ -66,7 +66,7 @@ public class State {
 
             State child = new State(childState);
             child.setMovedValue(state[siblingsIndex]);
-            child.setG(this.g + 1);
+            child.setG(g + 1);
 
             children.add(child);
         }
