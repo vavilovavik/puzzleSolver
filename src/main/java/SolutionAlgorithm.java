@@ -60,17 +60,17 @@ public class SolutionAlgorithm implements PuzzleSolver {
     private State getStateWithMinF(ArrayList<State> open) {
         State res = null;
         int minF = Integer.MAX_VALUE;
-        int maxG = 0;
+        int minH = Integer.MAX_VALUE;
         for (State state : open) {
             if (state.getF() == minF) {
-                if (state.getG() > maxG) {
-                    maxG = state.getG();
+                if (state.getH() < minH) {
+                    minH = state.getH();
                     res = state;
                 }
             }
             if (state.getF() < minF) {
                 minF = state.getF();
-                maxG = state.getG();
+                minH = state.getH();
                 res = state;
             }
         }
